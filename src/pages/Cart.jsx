@@ -77,7 +77,7 @@ const Cart = () => {
             <span>Total</span>
             <span>₹{cartTotal.toLocaleString('en-IN')}</span>
           </div>
-          <button className="btn btn-primary w-100 mt-4">Proceed to Checkout</button>
+          <Link to="/checkout" className="btn btn-primary w-100 mt-4" style={{ display: 'block', textAlign: 'center', textDecoration: 'none' }}>Proceed to Checkout</Link>
         </div>
       </div>
     </div>

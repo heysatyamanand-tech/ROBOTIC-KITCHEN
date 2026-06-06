@@ -9,6 +9,7 @@ import Projects from './pages/Projects';
 import ProjectDetails from './pages/ProjectDetails';
 import Blog from './pages/Blog';
 import Cart from './pages/Cart';
+import Checkout from './pages/Checkout';
 import Login from './pages/Login';
 import './index.css';
 
@@ -27,6 +28,7 @@ function App() {
               <Route path="/projects/drone" element={<ProjectDetails />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/cart" element={<Cart />} />
+              <Route path="/checkout" element={<Checkout />} />
               <Route path="/login" element={<Login />} />
             </Routes>
           </main>
