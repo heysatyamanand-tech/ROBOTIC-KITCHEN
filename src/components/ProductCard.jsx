@@ -26,7 +26,7 @@ const ProductCard = ({ product }) => {
         </div>
         
         <div className="product-price-row">
-          <span className="product-price">${product.price.toFixed(2)}</span>
+          <span className="product-price">₹{product.price.toLocaleString('en-IN')}</span>
           <button className="add-to-cart-btn" aria-label="Add to cart">
             <ShoppingCart size={18} />
           </button>
