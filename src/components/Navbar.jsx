@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ShoppingCart, User, Menu, X, Search } from 'lucide-react';
+import { useCart } from '../context/CartContext';
 import './Navbar.css';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { cartItemCount } = useCart();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,7 +42,7 @@ const Navbar = () => {
         <div className="nav-icons">
           <Link to="/cart" className="icon-btn cart-icon">
             <ShoppingCart size={24} />
-            <span className="cart-badge">2</span>
+            {cartItemCount > 0 && <span className="cart-badge">{cartItemCount}</span>}
           </Link>
           <Link to="/login" className="icon-btn">
             <User size={24} />

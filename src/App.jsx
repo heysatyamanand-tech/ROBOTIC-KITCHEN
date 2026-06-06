@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { CartProvider } from './context/CartContext';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -13,24 +14,26 @@ import './index.css';
 
 function App() {
   return (
-    <Router>
-      <div className="app-container">
-        <Navbar />
-        <main className="main-content">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/shop" element={<Shop />} />
-            <Route path="/categories" element={<Categories />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/projects/drone" element={<ProjectDetails />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/login" element={<Login />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </Router>
+    <CartProvider>
+      <Router>
+        <div className="app-container">
+          <Navbar />
+          <main className="main-content">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/shop" element={<Shop />} />
+              <Route path="/categories" element={<Categories />} />
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/projects/drone" element={<ProjectDetails />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/login" element={<Login />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </Router>
+    </CartProvider>
   );
 }
 

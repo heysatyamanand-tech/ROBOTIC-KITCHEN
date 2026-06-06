@@ -1,12 +1,17 @@
 import React from 'react';
-import { ShoppingCart, Star } from 'lucide-react';
+import { ShoppingCart, Star, Check } from 'lucide-react';
+import { useCart } from '../context/CartContext';
 import './ProductCard.css';
 
 const ProductCard = ({ product }) => {
+  const { addToCart, cart } = useCart();
+  
+  // Check if item is already in cart just for visual feedback (optional)
+  const isInCart = cart.some(item => item.id === product.id);
+
   return (
     <div className="product-card glass-panel">
       <div className="product-image-container">
-        {/* Placeholder for actual image */}
         <div className="product-image-placeholder">
           <span>{product.category}</span>
         </div>
@@ -27,8 +32,13 @@ const ProductCard = ({ product }) => {
         
         <div className="product-price-row">
           <span className="product-price">₹{product.price.toLocaleString('en-IN')}</span>
-          <button className="add-to-cart-btn" aria-label="Add to cart">
-            <ShoppingCart size={18} />
+          <button 
+            className={`add-to-cart-btn ${isInCart ? 'added' : ''}`} 
+            aria-label="Add to cart"
+            onClick={() => addToCart(product)}
+            style={isInCart ? { background: 'var(--accent-blue)', color: '#fff' } : {}}
+          >
+            {isInCart ? <Check size={18} /> : <ShoppingCart size={18} />}
           </button>
         </div>
       </div>
